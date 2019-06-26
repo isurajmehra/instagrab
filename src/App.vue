@@ -94,7 +94,7 @@ export default {
           this.items = items;
           this.url = '';
         }).catch(() => {
-          this.error = 'Something went wrong 😰. <br>Make sure the instagram post is available,<br>double check your internet connection, then try again.';
+          this.error = 'Something went wrong 😰. Make sure the instagram post is available,<br>double check your internet connection, then try again.';
         }).finally(() => {
           this.loading = false;
         });
