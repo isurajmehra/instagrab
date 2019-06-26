@@ -1,6 +1,6 @@
 <template>
   <div class="loader">
-    loading{{'.'.repeat(level)}}
+    grabbing{{'.'.repeat(level)}}
   </div>
 </template>
 
@@ -35,5 +35,6 @@ export default {
 <style>
   .loader {
     text-align: center;
+    color: #2196f3;
   }
 </style>

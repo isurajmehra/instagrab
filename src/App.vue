@@ -9,7 +9,9 @@
       <Loader v-if="loading"/>
       <div class="form">
         <form @submit.prevent="submitForm">
-          <div class="tip">Go ahead and copy any IG post link and paste in the box below 👇. You got this.</div>
+          <div class="tip">
+            Go ahead and copy any IG post link and paste in the box below 👇. You got this.
+          </div>
           <div>
             <input
               v-model="url"
@@ -64,12 +66,16 @@ export default {
     handleInput() {
       if (this.validUrl) {
         this.items = [];
+        this.loading = true;
         getPosts(this.validUrl).then((items) => {
           this.items = items;
+          this.loading = false;
           this.url = '';
           // blur input
           this.$refs.urlInput.blur();
-        }).catch(() => null); // fail silently
+        }).catch(() => {
+          this.loading = false;
+        }); // fail silently
       }
     },
 
@@ -83,15 +89,16 @@ export default {
         this.items = [];
         getPosts(this.validUrl).then((items) => {
           this.items = items;
+          this.loading = false;
           this.url = '';
         }).catch(() => {
+          this.loading = false;
           this.error = 'Something went wrong 😰. Make sure the instagram post is available,<br> double check your internet connection, then try again.';
         });
       } else {
         this.error = 'This is not a valid Instagram url 😒<br>Here\'s one ➡ <a href="https://www.instagram.com/p/BFnmHd8NYTo" target="__blank">https://www.instagram.com/p/BFnmHd8NYTo</a> 😉';
       }
 
-      this.loading = false;
       // blur input
       this.$refs.urlInput.blur();
     },
