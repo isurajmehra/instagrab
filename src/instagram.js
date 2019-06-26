@@ -7,13 +7,15 @@ const extractMediaFromNode = node => (
 );
 
 export default function getPosts(url) {
-  // url format ➡ https://www.instagram.com/p/
+  // url format ➡ https://www.instagram.com/p/BFnmHd8NYTo
   return new Promise((resolve, reject) => {
     const apiUrl = `${url}/?__a=1`;
     axios.get(apiUrl).then(({ data }) => {
       const media = data.graphql.shortcode_media;
+
       // multiple posts
       const children = media.edge_sidecar_to_children;
+
       const posts = children
         ? children.edges.map(edge => extractMediaFromNode(edge.node))
         : [extractMediaFromNode(media)];

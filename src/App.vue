@@ -9,6 +9,7 @@
       <Loader v-if="loading"/>
       <div class="form">
         <form @submit.prevent="submitForm">
+          <div class="tip">Go ahead and copy any IG post link and paste in the box below 👇</div>
           <div>
             <input
               v-model="url"
@@ -87,7 +88,7 @@ export default {
           this.error = 'Something went wrong 😰. Make sure the instagram post is available,<br> double check your internet connection, then try again.';
         });
       } else {
-        this.error = 'Not a valid Instagram url 😒';
+        this.error = 'This is not a valid Instagram url 😒<br>Here\'s one ➡ <a href="https://www.instagram.com/p/BFnmHd8NYTo" target="__blank">https://www.instagram.com/p/BFnmHd8NYTo</a> 😉';
       }
 
       this.loading = false;
@@ -170,6 +171,12 @@ export default {
 
   .form {
     margin: 10px 0 60px;
+    text-align: center;
+  }
+
+  .tip {
+    margin-bottom: 8px;
+    font-size: 12px;
   }
 
   .error {
@@ -185,6 +192,7 @@ export default {
     & p {
       font-size: 16px;
       color: #e7554a;
+      color: #de7a73;
     }
   }
   .credit {

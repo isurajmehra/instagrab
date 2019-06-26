@@ -6,6 +6,7 @@
         :class="['dot', {active: $index === currentIndex }]">
       </div>
     </div>
+
     <div style="position: relative">
       <ul class="media-items">
         <li v-for="(item, $index) in items"
@@ -30,7 +31,7 @@
     </div>
 
     <div class="download">
-      <a :href="items[currentIndex].url" download class="download">Download</a>
+      <a :href="items[currentIndex].url" download>Download</a>
     </div>
   </div>
 </template>
