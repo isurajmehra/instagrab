@@ -30,7 +30,7 @@
       </div>
     </main>
     <footer class="credit">
-      <p>Built with 💗 by <a href="https://twitter.com/ibenddrules" target="_blank">One regular irregular 👽</a></p>
+      <p>Built with 💗 by <a href="https://twitter.com/ibenddrules" target="_blank">One.regular.irregular 👽</a></p>
     </footer>
   </div>
 </template>
@@ -55,7 +55,7 @@ export default {
   }),
   computed: {
     validUrl() {
-      const regex = /^(((https?):\/\/)?([w|W]{3}\.)+instagram.com\/p\/[a-zA-Z0-9-_]+)\/.*/;
+      const regex = /^(((https?):\/\/)?([w|W]{3}\.)+instagram.com\/p\/[a-zA-Z0-9-_]{4,})\/?.*/;
       return regex.test(this.url) ? this.url.match(regex)[1] : null;
     },
   },
