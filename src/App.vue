@@ -67,15 +67,17 @@ export default {
       if (this.validUrl) {
         this.items = [];
         this.loading = true;
+
         getPosts(this.validUrl).then((items) => {
           this.items = items;
-          this.loading = false;
           this.url = '';
           // blur input
           this.$refs.urlInput.blur();
-        }).catch(() => {
-          this.loading = false;
-        }); // fail silently
+        })
+          .catch(() => null) // fail silently
+          .finally(() => {
+            this.loading = false;
+          });
       }
     },
 
@@ -87,13 +89,14 @@ export default {
       if (this.validUrl) {
         this.loading = true;
         this.items = [];
+
         getPosts(this.validUrl).then((items) => {
           this.items = items;
-          this.loading = false;
           this.url = '';
         }).catch(() => {
+          this.error = 'Something went wrong 😰. <br>Make sure the instagram post is available,<br>double check your internet connection, then try again.';
+        }).finally(() => {
           this.loading = false;
-          this.error = 'Something went wrong 😰. Make sure the instagram post is available,<br> double check your internet connection, then try again.';
         });
       } else {
         this.error = 'This is not a valid Instagram url 😒<br>Here\'s one ➡ <a href="https://www.instagram.com/p/BFnmHd8NYTo" target="__blank">https://www.instagram.com/p/BFnmHd8NYTo</a> 😉';
