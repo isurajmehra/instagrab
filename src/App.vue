@@ -191,7 +191,6 @@ export default {
 
     & p {
       font-size: 14px;
-      color: #e7554a;
       color: #de7a73;
     }
   }
