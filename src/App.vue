@@ -9,7 +9,7 @@
       <Loader v-if="loading"/>
       <div class="form">
         <form @submit.prevent="submitForm">
-          <div class="tip">Go ahead and copy any IG post link and paste in the box below 👇</div>
+          <div class="tip">Go ahead and copy any IG post link and paste in the box below 👇. You got this.</div>
           <div>
             <input
               v-model="url"
@@ -190,7 +190,7 @@ export default {
     }
 
     & p {
-      font-size: 16px;
+      font-size: 14px;
       color: #e7554a;
       color: #de7a73;
     }
